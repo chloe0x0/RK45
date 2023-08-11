@@ -1,5 +1,4 @@
 import numpy as np
-from scipy.integrate import RK45
 from typing import Callable
 
 def rk4_step(f: Callable, t: float, y: np.ndarray, h: float) -> np.ndarray:
@@ -53,26 +52,4 @@ def rk45(f: Callable, t0: float, y0: np.ndarray, t_bound: float) -> np.ndarray:
         y_in = step
 
     return trajectory
-
-def lorenz(t,y):
-    ''' The chaotic lorenz 1963 attractor
-    '''
-    sigma = 10
-    beta = 8/3
-    rho = 28
-
-    y_prime = [sigma*(y[1] - y[0]), y[0]*(rho - y[2]) - y[1], (y[0] * y[1]) - (beta * y[2])]
-    return np.array(y_prime)
-
-if __name__ == "__main__":
-    import matplotlib.pyplot as plt
-
-    # Initial Conditions
-    y0 = np.array([-8, 8, 27])
-    trajectory = rk45(lorenz, 0, y0, 10)
-
-    ax = plt.figure().add_subplot(projection='3d')
-    ax.plot(trajectory[0,:], trajectory[1,:], trajectory[2,:], 'r')
-    plt.show()
-
 
