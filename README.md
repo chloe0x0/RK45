@@ -14,6 +14,8 @@ $$\dot{y} = x(\rho - z) - y$$
 
 $$\dot{z} = xy - \beta z$$
 
+where $$\sigma, \rho, \beta \in \mathbb{R}$$
+
 to define the system in Python we will return a 3 dimensional vector 
 $$\langle 
     \dot{x}, 
