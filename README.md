@@ -62,6 +62,6 @@ ax.plot(trajectory[0,:], trajectory[1,:], trajectory[2,:], 'purple')
 plt.show()
 ```
 
-<center>
+<p align='center'>
     <img src='./imgs/lorenz.png'>
-</center>
+</p>
