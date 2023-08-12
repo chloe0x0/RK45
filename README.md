@@ -2,6 +2,10 @@
 
 Simple RK45 integrator implementation in Python
 
+### Note on accuracy
+
+At the moment it uses a fixed time step (a more efficient integrator would use an adaptive time step). As such, this is likely not quite as performant or accurate as scipy.solve_ivp and equivalent. It is still RK45 so it isnt a bad integrator.
+
 ## usage
 
 Lets use rk45 to simulate the Lorenz Attractor.
