@@ -52,7 +52,7 @@ t0 = 0
 t_bound = 25
 # Integrate the system's trajectory in time
 trajectory = rk45(lorenz, t0, y0, t_bound)
-# This returns a matrix where the ith column vector is the state of the system at time i
+# This returns a matrix where the ith column vector is the state of the system at the ith time step
 ```
 
 ### Visualizing the results
