@@ -2,6 +2,9 @@ import numpy as np
 from typing import Callable
 
 def rk4_step(f: Callable, t: float, y: np.ndarray, h: float) -> np.ndarray:
+    '''
+    A single rk4 step
+    '''
     k_1 = f(t, y)
     k_2 = f(t + 0.5*h, y + 0.5*h*k_1)
     k_3 = f(t + 0.5*h, y + 0.5*h*k_2)

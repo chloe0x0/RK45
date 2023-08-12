@@ -65,3 +65,61 @@ plt.show()
 <p align='center'>
     <img src='./imgs/lorenz.png'>
 </p>
+
+## More examples
+
+### SIR Model
+
+The SIR model is the first mathematical model of infectious disease. It assumes a homogenous, constant population that can be described 3 'compartments': Susceptibles, Infected, and Recovered. The infectivity of the disease and the recovery rate are constants $\beta$ and $\gamma$ respectively.
+
+Let $S$, $I$, $R$ denote the quantity of people in each compartment
+
+$N := S + I + R$
+
+The model is the following system of ODEs
+
+
+$$\frac{dS}{dt} = -\frac{\beta S I}{N}$$
+$$\frac{dI}{dt} = \frac{\beta S I}{N} - \gamma I$$
+$$\frac{dR}{dt} = \gamma I$$
+
+Given some IVP, $\langle S0, I0, R0 \rangle$ and constants $\beta$, $\gamma$
+
+```python
+def deriv(t,y):
+    ''' Derivatives for the SIR model with constant values of beta and gamma
+    '''
+    beta = 0.35
+    gamma = 1./10
+    N = 1000
+
+    dSdt = -beta*y[0]*y[1] / N
+    dIdt = (beta*y[0]*y[1] / N) - gamma*y[1]
+    dRdt = gamma*y[1]
+
+    return np.array([dSdt, dIdt, dRdt])
+
+# Total population
+N = 1000
+# initial infected
+I0 = 1
+# initial recovered
+R0 = 0
+# initial susceptible
+S0 = N - I0 - R0
+# initial conditions vector
+y0 = np.array([S0, I0, R0])
+
+t0 = 0
+t_bound = 250
+
+S, I, R = rk45(deriv, t0, y0, t_bound)
+```
+
+for this particular system the trajectory looks like this
+
+<p align='center'>
+    <img src='./imgs/SIR.png'>
+</p>
+
+There are many other [Compartmental Models](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology) that can be simulated in a similar manner with rk45. Each one uses different assumptions about the nature of the outbreak. In reality, SIR models are often not accurate on their own largely due to their simplicity. A more accurate compartmental model may have an intermediate stage between Susceptible and Infected called Exposed. Immunity loss, maternally derived immunity, vaccinations, control measures (infectivity rates, recovery rates, etc change over time), etc etc.
