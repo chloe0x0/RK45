@@ -27,6 +27,11 @@ def rk45(f: Callable, t0: float, y0: np.ndarray, t_bound: float) -> np.ndarray:
        Initial Values (Initial State)
     t_bound : float
        The boundary time (integration will not continue past this time)
+    Outputs
+    ----------
+    trajectory : np.ndarray (n,t_bound/h)
+      The Matrix representation of the systems trajectory through time.
+      The ith column vector represents the state of the system at the ith time step
     '''
     # time step (delta t)
     h = 0.01
