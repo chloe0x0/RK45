@@ -46,7 +46,7 @@ def rk45(f: Callable, t0: float, y0: np.ndarray, t_bound: float) -> np.ndarray:
     n = y0.shape[0]
     # Discrete time points
     Ts = int(t_bound / h)
-    t = np.linspace(0,t_bound,Ts)
+    t = np.linspace(t0,t_bound,Ts)
     # Matrix representation of the trajectory, each ith column vector is a state of the system y_i
     trajectory = np.zeros(shape = (n,Ts))
     y_in = y0
