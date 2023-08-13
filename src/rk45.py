@@ -27,6 +27,7 @@ def rk45(f: Callable, t0: float, y0: np.ndarray, t_bound: float) -> np.ndarray:
        Initial Values (Initial State)
     t_bound : float
        The boundary time (integration will not continue past this time)
+    
     Outputs
     ----------
     trajectory : np.ndarray (n,t_bound/h)
