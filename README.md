@@ -82,9 +82,10 @@ $N := S + I + R$
 
 The model is the following system of ODEs
 
-
 $$\frac{dS}{dt} = -\frac{\beta S I}{N}$$
+
 $$\frac{dI}{dt} = \frac{\beta S I}{N} - \gamma I$$
+
 $$\frac{dR}{dt} = \gamma I$$
 
 Given some IVP, $\langle S0, I0, R0 \rangle$ and constants $\beta$, $\gamma$
